@@ -10,5 +10,5 @@ Work in Progress
 
 * Created a database to store campsite names and locations using MongoDB and Mongoose.
 * Built application using the Express web application framework.
-
+* Learned async error handling and used JOI Schema validations on Express routes.
 
