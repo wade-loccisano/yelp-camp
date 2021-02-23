@@ -94,15 +94,6 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err });
 })
 
-// app.get('/makecampground', async (req, res) => {
-//     const camp = new Campground({
-//         title: 'My Backyard',
-//         description: 'cheap and easy to access'
-//     })
-//     await camp.save();
-//     res.send(camp);
-// })
-
 app.listen(3000, ()=> {
     console.log('Serving on port 3000');
 })
