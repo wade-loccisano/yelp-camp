@@ -3,6 +3,8 @@ const cities = require('./cities');
 const { places, descriptors } = require('./seedHelpers');
 const Campground = require('../models/campground');
 
+// mongodb is not free on heroku ><
+
 mongoose.connect('mongodb://localhost:27017/yelp-camp', {
     usedNewUrlParser: true,
     useCreateIndex: true,
