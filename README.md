@@ -11,4 +11,5 @@ Work in Progress
 * Created a database to store campsite names and locations using MongoDB and Mongoose.
 * Built application using the Express web application framework.
 * Implemented async error handling and route validation using JOI.
+* Used Bcrypt to generate password hashes and password salts for security
 
