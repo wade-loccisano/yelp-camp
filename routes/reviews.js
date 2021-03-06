@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router({mergeParams: true});
 
-const Campground = require('../models/campground');
-const Review = require('../models/review');
+const reviews = require('../controllers/reviews');
 
 const catchAsync = require('../utils/CatchAsync'); //wrapper handles errors
 const expressError = require('../utils/ExpressError');
@@ -19,21 +18,8 @@ const validateReview = (req, res, next) => {
     }
 }
 
-router.post('/', validateReview, catchAsync(async (req, res) => {
-    const campground = await Campground.findById(req.params.id);
-    const review = new Review(req.body.review);
-    campground.reviews.push(review);
-    await review.save();
-    await campground.save();
-    res.redirect(`/campgrounds/${campground._id}`);
-}))
+router.post('/', validateReview, catchAsync(reviews.createReview));
 
-router.delete('/:reviewId', catchAsync(async (req, res) => {
-    const {id, reviewId} = req.params;
-    await  Campground.findByIdAndUpdate(id, {$pull: {reviews: reviewId} });
-    await Review.findByIdAndDelete(reviewId);
-
-    res.redirect(`/campgrounds/${id}`);
-}))
+router.delete('/:reviewId', catchAsync(reviews.deleteReview));
 
 module.exports = router;
