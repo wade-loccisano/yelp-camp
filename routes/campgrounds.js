@@ -5,6 +5,9 @@ const expressError = require('../utils/ExpressError');
 const Campground = require('../models/campground');
 const {campgroundSchema} = require('../schemas.js');
 const {isLoggedIn} = require('../middleware');
+const multer = require('multer');
+const {storage} = require('../cloudinary');
+const upload = multer({ storage })
 
 const campgrounds = require('../controllers/campgrounds');
 
@@ -30,21 +33,24 @@ const validateCampground = (req, res, next) => {
 
 
 // Another way to do routing...
-// router.route('/')
-//     .get('/', catchAsync(campgrounds.index))
-//     .post('/', isLoggedIn, validateCampground, catchAsync(cambrounds.createCampground))
-
-router.get('/', catchAsync(campgrounds.index));
+router.route('/')
+    .get(catchAsync(campgrounds.index))
+    .post(isLoggedIn, upload.array('image'), validateCampground, catchAsync(campgrounds.createCampground))
 
 router.get('/new', isLoggedIn, campgrounds.renderNewForm);
 
-router.post('/', isLoggedIn, validateCampground, catchAsync(campgrounds.createCampground));
+// router.get('/', catchAsync(campgrounds.index));
+
+// router.post('/', isLoggedIn, validateCampground, catchAsync(campgrounds.createCampground));
+// router.post('/', upload.single('image'), (req, res) => {
+//     res.send(req.body, req.file);
+// })
 
 router.get('/:id', catchAsync(campgrounds.showCampground));
 
 router.get('/:id/edit', isLoggedIn, catchAsync(campgrounds.renderEditForm))
 
-router.put('/:id', validateCampground, catchAsync(campgrounds.updateCampground))
+router.put('/:id', upload.array('image'), validateCampground, catchAsync(campgrounds.updateCampground))
 
 router.delete('/:id', catchAsync(campgrounds.deleteCampground))
 

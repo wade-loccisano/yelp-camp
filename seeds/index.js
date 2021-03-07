@@ -29,9 +29,14 @@ const seedDB = async () => {
             author: '60413d40ff40c92ae44abbdb',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
-            image: 'https://source.unsplash.com/collection/483251',
             description: 'This is the description',
-            price
+            price : 0,
+            images: [
+                {
+                    url: 'https://res.cloudinary.com/dgertiaeu/image/upload/v1615079737/YelpCamp/b62wop9o4dxi7zaqkwlw.jpg',
+                    filename: 'YelpCamp/b62wop9o4dxi7zaqkwlw'
+                }
+            ]
 
         })
         await camp.save();
