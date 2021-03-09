@@ -71,3 +71,5 @@ module.exports.deleteCampground = async (req, res) => {
     await Campground.findByIdAndDelete(id);
     res.redirect('/campgrounds');
 }
+
+//
