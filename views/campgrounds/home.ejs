@@ -8,6 +8,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/stylesheets/home.css">
 </head>
 <body class="d-flex h-100 text-center text-white bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -17,9 +18,23 @@
                 <nav class="nav nav-masthead justify-content-center float-md-right">
                     <a href="#" class="nav-link active" aria-current="page">Home</a>
                     <a href="/campgrounds" class="nav-link">Campgrounds</a>
+                    <% if(!currentUser) { %> 
+                    <a href="/login" class="nav-link">Login</a>
+                    <a href="/register" class="nav-link">Register</a>
+                    <% } %> 
+                    <a href="/logout" class="nav-link">Logout</a>
                 </nav>
             </div>
         </header>
+        <main class="px-3">
+            <h1>YelpCamp</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum accusamus laborum, 
+                eos nihil error recusandae numquam quibusdam culpa delectus ipsam eaque soluta 
+                nesciunt odit magni quis corporis fugit distinctio debitis.</p>
+            <a href="/campgrounds" class="btn btn-lg btn-secondary">iew Campgrounds></a>
+        </main>
+        <footer class="mt-auto"></footer>
+        
     </div>
     
 
