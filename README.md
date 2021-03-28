@@ -13,4 +13,5 @@ Work in Progress
 * Implemented async error handling and route validation using JOI.
 * Used Bcrypt to generate password hashes and password salts for security.
 * Incorporated Cloudinary storage for images.
+* Used Mapbox API to render campsite locations to a map.
 
