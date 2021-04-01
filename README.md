@@ -14,4 +14,5 @@ Work in Progress
 * Used Bcrypt to generate password hashes and password salts for security.
 * Incorporated Cloudinary storage for images.
 * Used Mapbox API to render campsite locations to a map.
+* Sanitized inputs fields to prevent malicious injections.
 
