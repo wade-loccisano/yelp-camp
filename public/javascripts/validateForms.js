@@ -13,8 +13,7 @@
             event.preventDefault()
             event.stopPropagation()
             }
-            console.log();
             form.classList.add('was-validated')
         }, false)
         })
-    })()
+    })
