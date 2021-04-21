@@ -20,6 +20,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const user = require('./routes/users');
 const campgrounds = require('./routes/campgrounds');
 const reviews = require('./routes/reviews');
+const MongoStore = require('connect-mongo');
 
 const dbUrl = process.env.DB_URL;
 console.log(dbUrl);
@@ -49,6 +50,10 @@ app.use(express.urlencoded({extended: true})); // needed for POST
 app.use(methodOverride('_method')); // needed for delete and put
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize());
+
+const store = new MongoStore({
+    url: '';
+})
 
 const sessionConfig = {
     name: 'session',
