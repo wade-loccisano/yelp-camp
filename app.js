@@ -52,11 +52,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize());
 
 const store = new MongoStore({
-    url: '';
+    url: '',
+    secret: 'oursecret',
+    touchAfter: 24 * 60 * 60;
+});
+
+store.on('error', function (e) {
+    console.log("session store error", e);
 })
 
 const sessionConfig = {
-    name: 'session',
+    // name: 'session',
+    store,
     secret: 'oursecret',
     resave: false,
     saveUninitialized: true,
